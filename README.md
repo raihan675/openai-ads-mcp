@@ -85,33 +85,19 @@ OPENAI_ADS_API_BASE_URL=https://api.ads.openai.com/v1
 
 ## 🔌 Host Configuration
 
-### Claude Desktop
-Add to your `claude_desktop_config.json`:
+### 🚀 Google Antigravity
+Add to your global Antigravity MCP configuration file at `~/.gemini/config/mcp_config.json`:
 
 ```json
 {
   "mcpServers": {
-    "openai-ads": {
+    "openai-ads-mcp": {
       "command": "node",
-      "args": ["C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"],
+      "args": [
+        "C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"
+      ],
       "env": {
-        "OPENAI_ADS_API_KEY": "your_actual_ads_api_key_here"
-      }
-    }
-  }
-}
-```
-
-### Cursor (`.cursor/mcp.json` or Global Settings)
-
-```json
-{
-  "mcpServers": {
-    "openai-ads": {
-      "command": "node",
-      "args": ["C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"],
-      "env": {
-        "OPENAI_ADS_API_KEY": "your_actual_ads_api_key_here"
+        "OPENAI_ADS_API_KEY": "your_openai_ads_api_key_here"
       }
     }
   }
@@ -120,7 +106,89 @@ Add to your `claude_desktop_config.json`:
 
 ---
 
-## 🛠️ Tool Catalog Reference
+### 💬 ChatGPT (Desktop / Developer Mode)
+Add to your ChatGPT MCP configuration (`~/.chatgpt/mcp.json` or Developer Mode settings):
+
+```json
+{
+  "mcpServers": {
+    "openai-ads": {
+      "command": "node",
+      "args": [
+        "C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"
+      ],
+      "env": {
+        "OPENAI_ADS_API_KEY": "your_openai_ads_api_key_here"
+      }
+    }
+  }
+}
+```
+
+---
+
+### ⚡ OpenAI Codex / Codex CLI
+Add to your Codex MCP configuration (`~/.codex/config.json` or `codex-mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "openai-ads": {
+      "command": "node",
+      "args": [
+        "C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"
+      ],
+      "env": {
+        "OPENAI_ADS_API_KEY": "your_openai_ads_api_key_here"
+      }
+    }
+  }
+}
+```
+
+---
+
+### 💻 Cursor (`.cursor/mcp.json`)
+
+```json
+{
+  "mcpServers": {
+    "openai-ads": {
+      "command": "node",
+      "args": [
+        "C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"
+      ],
+      "env": {
+        "OPENAI_ADS_API_KEY": "your_openai_ads_api_key_here"
+      }
+    }
+  }
+}
+```
+
+---
+
+### 🟣 Claude Desktop (`claude_desktop_config.json`)
+
+```json
+{
+  "mcpServers": {
+    "openai-ads": {
+      "command": "node",
+      "args": [
+        "C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"
+      ],
+      "env": {
+        "OPENAI_ADS_API_KEY": "your_openai_ads_api_key_here"
+      }
+    }
+  }
+}
+```
+
+---
+
+## 🛠️ Tool Catalog Reference (43 Tools)
 
 ### 🏢 Account & Brand
 | Tool | Description |
@@ -136,6 +204,7 @@ Add to your `claude_desktop_config.json`:
 | `create_campaign` | Create a campaign (`impressions`, `clicks`, or `conversions` oCPC). |
 | `update_campaign` | Update lifetime budget, schedule timestamps, status, or description. |
 | `set_campaign_state` | Explicitly `activate`, `pause`, or `archive` a campaign. |
+| `clone_campaign_structure` | Deep-copies an existing campaign, ad groups, and ads into a new campaign structure. |
 
 ### 👥 Ad Groups
 | Tool | Description |
@@ -152,15 +221,16 @@ Add to your `claude_desktop_config.json`:
 | `upload_creative_asset` | Upload a remote image URL to obtain a reusable `file_id`. |
 | `list_ads` | List ads in an ad group. |
 | `get_ad` | Fetch ad creative and `review_status` (`in_review`, `approved`, `rejected`). |
-| `create_ad` | Create a `chat_card` (image card) or `product_ad_template` ad. |
+| `create_ad` | Create a `chat_card` (image card) or `product_ad_template` ad with intent prompts. |
 | `preview_ad` | Generate a 24-hour web preview URL for an ad. |
 | `set_ad_state` | Explicitly `activate`, `pause`, or `archive` an ad. |
+| `generate_ad_intent_queries` | AI brainstorming tool generating realistic ChatGPT user prompt queries & conversational copy. |
 
 ### 📊 Insights & Reporting
 | Tool | Description |
 | :--- | :--- |
-| `get_delivery_insights` | Query impressions, clicks, spend, CTR, CPC, CPM across account, campaign, ad group, or ad scopes with optional product/country/device breakdowns. |
-| `get_conversion_insights` | Query attributed click-through and view-through conversions. |
+| `get_delivery_insights` | Query impressions, clicks, spend, CTR, CPC, CPM across account, campaign, ad group, or ad scopes. |
+| `get_conversion_insights` | Query attributed click-through and view-through conversions and revenue. |
 
 ### 🎯 Measurement & Conversions
 | Tool | Description |
@@ -170,6 +240,7 @@ Add to your `claude_desktop_config.json`:
 | `create_conversions_api_key` | Generate a server-side Conversions API key (CAPI). |
 | `create_conversion_event_setting` | Define conversion goals (`order_created`, `lead_created`, etc.). |
 | `list_conversion_event_settings` | List all configured conversion definitions in the account. |
+| `send_test_conversion_event` | Dispatch test or live server-side conversion events via CAPI with automatic hashing. |
 
 ### 👥 Custom Audiences
 | Tool | Description |
@@ -181,6 +252,7 @@ Add to your `claude_desktop_config.json`:
 | `merge_custom_audiences` | Union 2 to 64 existing audiences into a new independent audience. |
 | `archive_custom_audience` | Permanently archive a custom audience. |
 | `get_audience_operation_status` | Poll status of asynchronous membership mutations. |
+| `prepare_custom_audience_payload` | Validates, normalizes, and SHA-256 hashes raw customer emails/phones with auto-upload. |
 
 ### 🛍️ Product Feeds & Delta Updates
 | Tool | Description |
@@ -198,11 +270,12 @@ Add to your `claude_desktop_config.json`:
 | :--- | :--- |
 | `search_geo_locations` | Search DMAs, regions, and countries for location IDs. |
 
-### ⭐ Tracking Intelligence & Audits
+### ⭐ Tracking Intelligence & Anomaly Guardrails
 | Tool | Description |
 | :--- | :--- |
 | `audit_conversion_tracking` | Deep diagnostic of brand approval, configured event settings, and real-time pixel health. |
 | `analyze_campaign_performance` | Evaluates spend, CTR, CPC, conversions, CPA, and provides actionable recommendations. |
+| `detect_spend_anomalies` | Budget protector guardrail detecting zero-conversion spend drain and CPA runaway. |
 
 ---
 

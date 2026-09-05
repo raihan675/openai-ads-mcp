@@ -4,6 +4,44 @@ This guide covers all **43 tools** available in the `openai-ads-mcp` server. Eac
 
 ---
 
+## ⚙️ Antigravity Configuration & Setup
+
+To connect and use this MCP server inside Google Antigravity:
+
+### 1. Global Configuration File
+Open your Antigravity MCP configuration file:
+- **Location**: `~/.gemini/config/mcp_config.json`
+- **Windows Path**: `C:\Users\HP\.gemini\config\mcp_config.json`
+
+### 2. Add to `mcpServers`
+Add the following entry inside the `"mcpServers"` object:
+
+```json
+{
+  "mcpServers": {
+    "openai-ads-mcp": {
+      "command": "node",
+      "args": [
+        "C:/Users/HP/.gemini/antigravity/scratch/openai-ads-mcp/dist/index.js"
+      ],
+      "env": {
+        "OPENAI_ADS_API_KEY": "your_openai_ads_api_key_here"
+      }
+    }
+  }
+}
+```
+
+> **Note**: If `node` is not in your global system PATH, you can use the exact node binary path, for example:
+> `"command": "C:/Users/HP/.gemini/antigravity/scratch/node-v20.18.0-win-x64/node.exe"`
+
+### 3. Verify in Antigravity
+1. Restart Antigravity or open a new chat session.
+2. Click **Additional Options (`...`) > MCP Servers** in the UI.
+3. You will see `openai-ads-mcp` with all **43 tools** active and ready.
+
+---
+
 ## 1. Account & Brand Management
 
 ### `get_ad_account`
