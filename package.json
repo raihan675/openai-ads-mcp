@@ -1,0 +1,36 @@
+{
+  "name": "openai-ads-mcp",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Model Context Protocol (MCP) server for the OpenAI Ads Advertiser API and Conversion Intelligence",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "openai-ads-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "openai-ads",
+    "ads-manager",
+    "conversions-api",
+    "marketing-agent"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}
